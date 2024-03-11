@@ -30,7 +30,7 @@ function App() {
     // Promise.all([axios.get('URL1'), axios.get('URL2')])
     //     .then()
 
-
+    axios.defaults.withCredentials = true;
 
     return (
         <div className="App">
@@ -75,7 +75,7 @@ function App() {
                         </div>
 
                         <button onClick={()=> {
-                            axios.get("https://korea-webtoon-api.herokuapp.com/search?keyword=갓오브하이스쿨")
+                            axios.get("https://github.com/juuuuuuuuuuuuuu/juuuuuuuuuuuuuu.github.io/blob/master/content.json")
                                 .then((data) => {
                                     //요청이 성공했을 때
                                     console.log(data);
