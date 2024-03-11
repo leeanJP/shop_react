@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.main-bg {
+  height: 360px;
+  background-image: url("./bg_main.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.image-box {
+  width:380px;
+  height:320px;
+  overflow:hidden;
+  margin:0 auto;
+}
+
+.image-thumbnail {
+  width:100%;
+  height:100%;
+  object-fit:scale-down;
+}
+
+.start{
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 2s;
+}

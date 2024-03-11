@@ -1,0 +1,123 @@
+페이지를 나눌 때
+
+일반적으로는 html css js
+react 에서는 html 파일을 하나만 사용
+
+
+클라이언트 요청이 오면 내부에 있는 div 갈아치워서
+보여준다.
+
+react-router-dom 라이브러리를 사용해서 처리
+npm install react-router-dom@6
+
+
+Route 사용 방법
+1. 상단에 Route import
+2. <Routes> 태그 열고 그안에 <Route> 태그 작성
+3. <Route path="/url경로" element={보여줄 html}/> 작성
+
+
+페이지 이동기능
+- useNavigate() 사용
+
+
+styled-components
+npm install styled-components
+
+사용법
+
+1. <태그명> 만들때에는
+styled.태그명``
+2. 백틱 기호 안에서 css 작성
+3. <컴포넌트명/>
+
+장점
+1. css파일 오픈할 필요없이 바로 css 작성가능
+2. 여기 적은 스타일이 다른 js 파일로 오염이 안된다.
+3. 페이지 로딩시간이 단축된다.
+
+
+일반 css 파일 오염방지하는 방법
+컴포넌트명.module.css 파일 생성 후 css 코드 작성
+
+
+단점
+1. js 파일이 복잡해진다.
+2. 중복 코드가 늘어나거나 import export를 여러번 해야한다.
+3. 협업 시에 디자이너가 styled-components 문법을
+모른다면 복잡함
+
+
+컴포넌트
+1. 생성 (mount)
+2. 재렌더링 (update)
+3. 삭제 (unmount)
+
+컴포넌트가 1,2,3 이 되기전에, 되고나서
+특정 동작을 해라
+
+
+clean up function
+useEffect 동작하기 전에 특정코드를 실행해줌
+return() => {} 안에 넣어준다.
+
+대표적으로
+타이머제거
+sokect 연결 요청 제거
+ajax 요청 중단
+
+unmount 시에도 clean up function 동작함
+
+
+
+Ajax 요청 방법
+1. XMLHttpRequest
+2. fetch()
+3. axios 외부라이브러리
+
+axios 설치
+npm install axios
+
+
+
+애니메이션(transition)
+
+만드는 순서
+1. 애니메이션 동적 전 스타일 클래스 만들기
+2. 애니메이션 동작 후 스타일 클래스 만들기
+3. transition 속성을 동작 후 스타일에 추가
+4. 원할 때 2번 클래스를 탈부착
+
+setTimeout 쓰는 이유
+> 리액트에서는 automatic batch 라는 기능때문에
+state 변경함수들이 연달아서 여러개 동작할 경우
+state 변경함수를 다 처리하고 마지막에 한번만
+재렌더링 함
+flushSync() 이런 메서드 써도 가능함
+
+
+Context API // Redux 라이브러리
+
+Context API 만드는 법
+1. createContext() 함수를 사용해서
+context 생성
+2. 만든 context로 원하는 곳을 감싸고
+공유를 원하는 state를 value 안에 적는다.
+
+Context안에 있는 state 사용법
+1. 만들어 둔 Context를 import
+2. useContext(가져온 context)
+
+
+Redux store에 state 보관하는 법
+
+1. createSlice() 로 state 만들고
+2. configureStore() 안에 등록
+
+
+Redux 안에 state 변경하는 방법
+1. store.js state 변경하는 함수 만들기
+2. export
+3. 필요한 곳에서 import
+4. dispatch() 감싸서 사용
+
