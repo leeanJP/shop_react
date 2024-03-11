@@ -30,7 +30,6 @@ function App() {
     // Promise.all([axios.get('URL1'), axios.get('URL2')])
     //     .then()
 
-    axios.defaults.withCredentials = true;
 
     return (
         <div className="App">
@@ -75,7 +74,7 @@ function App() {
                         </div>
 
                         <button onClick={()=> {
-                            axios.get("https://github.com/juuuuuuuuuuuuuu/juuuuuuuuuuuuuu.github.io/blob/master/content.json")
+                            axios.get("https://raw.githubusercontent.com/leeanJP/shop_react/master/src/data.json")
                                 .then((data) => {
                                     //요청이 성공했을 때
                                     console.log(data);
