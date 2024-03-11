@@ -74,11 +74,11 @@ function App() {
                         </div>
 
                         <button onClick={()=> {
-                            axios.get("https://raw.githubusercontent.com/leeanJP/shop_react/master/src/data.json")
+                            axios.get("https://raw.githubusercontent.com/leeanJP/shop_react/master/src/userdata.json")
                                 .then((data) => {
                                     //요청이 성공했을 때
                                     console.log(data);
-                                    let copy = [...items, ...data.data.webtoons]
+
                                     //copy = [기존 array, 가져온 data]
                                     //setItems(copy);
                                     // [{},{},{},{},{},{}]
