@@ -1,19 +1,17 @@
 import {configureStore, createSlice} from "@reduxjs/toolkit";
+import user from './store/userSlice.js'
 
-let user = createSlice({
-    name : 'user', //state 이름
-    initialState : {name : 'Lee' , age : 20}, //state 기본값
-    reducers : {
-        changeName(state){
-            state.name = 'park'
-        }
-    }
-})
 
 let stock = createSlice({
     name : 'stock',
     initialState : [7,8,9]
 })
+
+// Cart페이지에서 + 버튼 만들고
+// + 버튼 클릭 시 해당 상품의 count +1
+
+//상세페이지 주문하기 버튼 클릭 시 새로운 상품이 state 추가되는 기능
+
 
 let cart  = createSlice({
     name : 'cart',
@@ -32,7 +30,18 @@ let cart  = createSlice({
             count : 1,
             price : 479000
         }
-    ]
+    ],
+    reducers : {
+        addCount(state, action) {
+            let num = state.findIndex((a) => {
+                return a.id === action.payload
+            })
+            state[num].count ++
+        },
+        addItem(state, action){
+            state.push(action.payload)
+        }
+    }
 })
 
 
@@ -45,4 +54,4 @@ export  default  configureStore({
     }
 })
 
-export let {changeName} = user.actions
+export let {addCount,addItem} = cart.actions

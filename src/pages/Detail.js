@@ -3,6 +3,11 @@ import styled from "styled-components";
 import {useContext, useEffect, useState} from "react";
 import {Nav} from "react-bootstrap";
 import {Context1} from "../App.js";
+import {addItem} from "../store.js"
+import {useDispatch, useSelector} from "react-redux";
+import {useQuery} from "react-query";
+import axios from "axios";
+
 // let YellowBtn = styled.button`
 // //    css 작성
 //     background:  ${props => props.bg};
@@ -13,29 +18,48 @@ import {Context1} from "../App.js";
 function Detail(props) {
 
     let {id} = useParams();
-    let {items} = useContext(Context1);
+    let items = props.items
+    console.log(items);
     let findItem = items.find(function (x){
         return x.id == id;
     })
 
-    console.log(items);
+    console.log(findItem);
+    let dispatch = useDispatch();
     const imgUrl = process.env.PUBLIC_URL + "/item" + (Number(id) + 1) + ".png"
 
     let [count, setCount] = useState(0);
     let [alert1, setAlert1] = useState(true);
     let [num , setNum] = useState('');
     let [tab, setTab] = useState(0);
+    let state = useSelector((state) =>state)
 
+
+    let result = useQuery('data', ()=>
+        axios.get('https://raw.githubusercontent.com/leeanJP/shop_react/master/src/userdata.json')
+            .then((a)=> {
+                console.log('요청됨');
+                return a.data
+            }).finally(() =>{
+            console.log(1);
+        }), {staleTime : 1000 }
+
+    )
+
+    console.log(result);
+
+
+    setCount(1);
+    setNum(2);
+    setAlert1(false);
 
     useEffect(() => {
         //컴포넌트가 mount update 될 때 코드 실행됨
         let timer = setTimeout(()=> {setAlert1(5000)}, 5000)
-
         return () => {
             //여기있는게 먼저 실행되고
             clearTimeout(timer);
         }
-
     },[count]);
 
     useEffect(() => {
@@ -63,6 +87,10 @@ function Detail(props) {
                     <p>{findItem.content}</p>
                     <p>{findItem.price}</p>
                     <button className="btn btn-danger">주문하기</button>
+                    <button className="btn btn-primary" onClick={() =>{
+                        dispatch(addItem(findItem))
+                    }}>장바구니 담기</button>
+
                 </div>
             </div>
             <input onChange={(e) => {setNum(e.target.value)}}></input>

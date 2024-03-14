@@ -123,3 +123,112 @@ Redux 안에 state 변경하는 방법
 
 user age +1 해주는 함수 만들고
 cart.js 에서 버튼 클릭시 동작하도록 만들기
+
+
+
+if문 작성패턴
+
+1. 컴포넌트 안에서 쓰는 if/else
+
+우리가 자주 쓰던 if문은
+return() 안의 jsx 문법 안에서는 사용불가
+
+return(
+    <div>{if(조건)} </div>
+)
+
+else문과 중괄호 하나 생략 가능
+
+2. JSX 안에서 사용하는 삼항연산자
+
+조건문 ? 참일때 실행할 코드 : 거짓일때 실행할 코드
+삼항연산자 중첩 가능
+> 나중에 내가 봤을 떄 or 남이 봤을때 파악하기 힘든
+코드는 잘못짜여진코드
+
+
+3. && 연산자로 if 역할 대신하기
+
+왼쪽 조건식이 true 면 오른쪽 jsx가 그자리에 남는다.
+왼쪽 조건식이 false면 false가 남고 HTML로 렌더링 X
+
+4. switch /case 조건문
+
+장점 : if문 연달아서 쓸때 코드가 줄어든다.
+단점 : 조건식에 변수 하나만 쓸수있다.
+
+
+5. object/Array 자료형 응용
+경우에 따라서 다른 html 내용을 보여주고 싶은경우
+현재 state에 따라서 info <p>상품정보</p>
+shipping <p>배송정보</p>
+refund <p>환불약관</p>
+
+
+jsx 상에서 html 태그는 obj, arr담든 상관없음
+
+
+localStorage
+
+redux-persist
+
+
+react-query
+- 몇 초마다 자동으로 데이터 다시 가져오기
+- 요청 실패 시 몇초 간격으로 재시도
+- 다음페이지 미리 가져오기
+- ajax 성공 실패시 각각 다른 html 보여주기
+
+
+설치 & 셋팅
+1.npm install react-query@3 설치
+
+index.js 에서
+2.import {QueryClient, QueryClientProvider, useQuery} from "react-query";
+3.const queryClient = new QueryClient();
+4. <QueryClientProvider> 태그로 감싸준다.
+
+
+CORS 오류 대응
+1. npm install --save-dev http-proxy-middleware
+
+
+react-quert 장점
+1. ajax 요청 성공 실패 로딩중 상태를
+쉽게 파악할 수 있다.
+
+2.ajax 재요청을 계속 해준다.
+
+3.실패시 재시도도 알아서 해준다.
+
+
+
+lazy import
+
+memo
+자식 컴포넌트의 재렌더링 관리
+
+1. memo 를 import
+2. 원하는 컴포넌트 정의 부분을
+memo()로 감싼다.
+
+자식 컴포넌트에 전달한 props를
+기존 props랑 바뀐 값 props를 비교하는
+연산이 추가로 동작
+
+
+
+useMemo
+>> useEffect와 비슷한 용도
+컴포넌트 로드시 or 특정 state 변경시에만
+실행하고 싶을 때 사용
+
+
+useTransition
+startTransition 으로 state변경함수를 묶으면
+그걸 다른 코드들보다 나중에 처리해준다.
+
+
+useDeferredValue
+
+
